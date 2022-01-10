@@ -1,6 +1,7 @@
 import { Portal } from '@angular/cdk/portal';
 import { collectExternalReferences } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Board, Box, BoxProps, Column, ColumnProps } from '../models/board';
 
 @Injectable({
@@ -8,6 +9,8 @@ import { Board, Box, BoxProps, Column, ColumnProps } from '../models/board';
 })
 export class BoardService {
   private _board: Board;
+
+  private boardChanged = new Subject<object>();
 
   constructor() { 
     this._board = new Board({
@@ -82,6 +85,10 @@ export class BoardService {
     })
   }
 
+  onBoardChange(): Observable<object>{
+    return this.boardChanged.asObservable();
+  }
+
   getColumns(): Column[] {
     return this._board.columns;
   }
@@ -89,11 +96,13 @@ export class BoardService {
   createColumn(props: ColumnProps): Column{
     let column = new Column(props);
     this._board.columns.push(column);
+    this.boardChanged.next({});
     return column;
   }
 
   deleteColumn(id: string) {
     this._board.columns = this._board.columns.filter(c => c.uuid !== id);
+    this.boardChanged.next({});
   }
 
   getBox(id: string):Box {
@@ -112,6 +121,7 @@ export class BoardService {
       if (column.uuid === columnId)
         column.boxes.push(box);
     });
+    this.boardChanged.next({});
     return box;
   }
 
@@ -119,6 +129,7 @@ export class BoardService {
     this._board.columns.forEach(column => {
       column.boxes = column.boxes.filter(b => b.uuid !== id);
     });
+    this.boardChanged.next({});
   }
 
   updateBox(id:string, props: BoxProps) {
@@ -129,6 +140,7 @@ export class BoardService {
       if (i === -1) return;
       column.boxes[i] = box;
     });
+    this.boardChanged.next({});
   }
 
   moveBox(idBox: string, idOldColumn: string, idNewColumn: string ) {
@@ -138,5 +150,6 @@ export class BoardService {
       if (column.uuid === idOldColumn) column.boxes = column.boxes.filter(b => b.uuid !== idBox);
       if (column.uuid === idNewColumn) column.boxes.push(box);
     })
+    this.boardChanged.next({});
   }
 }

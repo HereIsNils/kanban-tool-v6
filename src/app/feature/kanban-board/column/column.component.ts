@@ -15,21 +15,11 @@ export class ColumnComponent {
   constructor(private boardService: BoardService) {
   }
 
-  ngOnInit(): void {
-    this.refreshColumns();
-  }
-
-  private refreshColumns(): void {
-    
-  }
-
   deleteColumn() {
     if (this.column !== undefined){
       this.boardService.deleteColumn(
       this.column.uuid
       )
-
     }
-    this.refreshColumns();
   }
 }
