@@ -1,0 +1,10 @@
+<div class="flex flex-row">
+    <ng-container *ngIf="columns">
+        <app-column *ngFor="let column of columns" [column]="column"></app-column>
+    </ng-container>
+    <div>
+        <button mat-fab (click)="createColumn()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>
