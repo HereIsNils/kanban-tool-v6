@@ -1,8 +1,8 @@
-<div class="flex flex-row">
+<div class="flex flex-row bg-customDarkBlue">
     <ng-container *ngIf="columns">
         <app-column *ngFor="let column of columns" [column]="column"></app-column>
     </ng-container>
-    <div>
+    <div class="items-center h-screen">
         <button mat-fab (click)="createColumn()">
             <mat-icon>add</mat-icon>
         </button>

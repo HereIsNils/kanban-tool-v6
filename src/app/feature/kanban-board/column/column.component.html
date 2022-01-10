@@ -1,10 +1,10 @@
-<div *ngIf="column" class="column m-3">
+<div *ngIf="column" class="m-3 text-customWhite text-center h-screen">
     <!-- Header stuff. -->
-    <div class="m-3">
+    <div class="m-2 border-b-4">
         <h1>{{column.name}}</h1>
     </div>
     <!-- Boxes. -->
-    <div class="flex flex-col">
+    <div class="flex flex-col text-left">
         <app-box *ngFor="let box of column.boxes" [boxId]="box.uuid"></app-box>
     </div>
 </div>
