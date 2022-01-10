@@ -14,6 +14,7 @@ export class BoardService {
       columns: [
         {
           name: "todo",
+          uuid: "bla",
           boxes: [
             {
               name: "fix this1",

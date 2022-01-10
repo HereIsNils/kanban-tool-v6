@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Board, Column } from 'src/app/core/models/board';
 import { BoardService } from 'src/app/core/services/board.service';
 
@@ -18,7 +18,7 @@ export class KanbanBoardComponent implements OnInit {
     this.refreshColumns();
   }
 
-  private refreshColumns(): void {
+  public refreshColumns(): void {
     this.columns = this.boardService.getColumns();
   }
 

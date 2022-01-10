@@ -1,4 +1,8 @@
 <div *ngIf="column" class="m-3 text-customWhite text-center h-screen">
+    <!-- Remove column button. -->
+    <button mat-icon-button class="place-self-end" (click)="deleteColumn()">
+        <mat-icon>remove</mat-icon>
+    </button>
     <!-- Header stuff. -->
     <div class="m-2 border-b-4">
         <h1>{{column.name}}</h1>

@@ -2,8 +2,8 @@
     <ng-container *ngIf="columns">
         <app-column *ngFor="let column of columns" [column]="column"></app-column>
     </ng-container>
-    <div class="items-center h-screen">
-        <button mat-fab (click)="createColumn()">
+    <div class="py-[8%]">
+        <button mat-fab color="accent" (click)="createColumn()">
             <mat-icon>add</mat-icon>
         </button>
     </div>
