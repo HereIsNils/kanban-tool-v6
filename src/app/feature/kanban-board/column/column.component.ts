@@ -22,4 +22,12 @@ export class ColumnComponent {
       )
     }
   }
+
+  onTitleChange(){
+    if (this.column !== undefined){
+      /*this.boardService.updateColumn(
+        this.column.uuid
+      )*/
+    }
+  }
 }

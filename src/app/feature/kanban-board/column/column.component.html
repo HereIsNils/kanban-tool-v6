@@ -3,7 +3,10 @@
     <!-- Header stuff. -->
     <div class="flex flex-col">
         <div class="m-2 border-b-4">
-            <h1>{{column.name}}</h1>
+            <input  class="bg-transparent text-center text-2xl my-2 w-[240px]" 
+                    type="text" 
+                    value="{{column.name}}"
+                    onchange="onTitleChange()">
         </div>
         <!-- Boxes. -->
         <div class="flex flex-col text-left">
