@@ -104,14 +104,12 @@ export class BoardService {
     this.boardChanged.next({});
   }
 
-  /*updateColumn(id: string, props: ColumnProps){
+  updateColumn(id: string, props: ColumnProps){
     let storedColumn = new Column(props);
 
-    this._board.columns.forEach(column => {
-      let i = this._board.columns.indexOf(column.uuid ==== id)
-    })
+    //this._board.columns.forEach()
     this.boardChanged.next({})
-  }*/
+  }
 
   getBox(id: string):Box {
     let box: Box | undefined;

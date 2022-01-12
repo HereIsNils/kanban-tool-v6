@@ -19,15 +19,15 @@ export class ColumnComponent {
     if (this.column !== undefined){
       this.boardService.deleteColumn(
       this.column.uuid
-      )
+      );
     }
   }
 
   onTitleChange(){
     if (this.column !== undefined){
-      /*this.boardService.updateColumn(
-        this.column.uuid
-      )*/
+      this.boardService.updateColumn(
+        this.column.uuid, this.column
+      );
     }
   }
 }
