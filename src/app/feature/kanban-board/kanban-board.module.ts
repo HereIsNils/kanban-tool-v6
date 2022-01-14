@@ -4,6 +4,7 @@ import { KanbanBoardComponent } from './kanban-board.component';
 import { ColumnComponent } from './column/column.component';
 import { BoxComponent } from './box/box.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -11,7 +12,8 @@ import { CoreModule } from 'src/app/core/core.module';
   declarations: [
     KanbanBoardComponent,
     ColumnComponent,
-    BoxComponent
+    BoxComponent,
+    ModalComponent
   ],
   imports: [
     CoreModule

@@ -17,6 +17,11 @@ export interface BoxProps {
     description: string;
 }
 
+export interface ModalData {
+    name: string;
+    description: string;
+  }
+
 export class Box {
     private _uuid: string;
     private _name: string;
