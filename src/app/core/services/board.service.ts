@@ -106,8 +106,9 @@ export class BoardService {
 
   updateColumn(id: string, props: ColumnProps){
     let storedColumn = new Column(props);
-
-    //this._board.columns.forEach()
+    let i = this._board.columns.findIndex(column => column.uuid === id);
+    if (i === -1) return;
+    this._board.columns[i] = storedColumn;
     this.boardChanged.next({})
   }
 

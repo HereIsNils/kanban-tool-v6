@@ -8,7 +8,7 @@ import { KanbanBoardModule } from './kanban-board/kanban-board.module';
   declarations: [],
   imports: [
     CommonModule,
-    KanbanBoardModule
+    KanbanBoardModule,
   ],
   exports: [
     KanbanBoardModule

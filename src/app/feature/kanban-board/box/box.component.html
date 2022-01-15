@@ -1,4 +1,4 @@
-<div *ngIf="box" class="bg-customMidBlue m-3 p-2 rounded-lg drop-shadow-lg hover:bg-opacity-75">
+<div (click)="openDialog()" *ngIf="box" class="bg-customMidBlue m-3 p-2 rounded-lg drop-shadow-lg hover:bg-opacity-75">
     <h2>{{box.name}}</h2>
     <p>{{box.description}}</p>
 </div>
