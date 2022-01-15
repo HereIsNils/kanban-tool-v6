@@ -52,6 +52,14 @@ export class Box {
     set description(newDesc: string) {
         this._description = newDesc;
     }
+
+    getProps(): BoxProps{
+        return {
+            uuid: this.uuid,
+            name: this.name,
+            description: this.description
+        }
+    }
 }
 
 export class Column {
@@ -84,6 +92,14 @@ export class Column {
     set boxes(newBox: Box[]) {
         this._boxes = newBox;
     }
+
+    getProps(): ColumnProps{
+        return {
+            uuid: this.uuid,
+            name: this.name,
+            boxes: this.boxes.map(b => b.getProps())
+        }
+    }
 }
 
 export class Board {
@@ -99,5 +115,11 @@ export class Board {
 
     set columns(newColum: Column[]) {
         this._columns = newColum;
+    }
+
+    getProps(): BoardProps{
+        return {
+            columns: this.columns.map(c => c.getProps())
+        }
     }
 }
