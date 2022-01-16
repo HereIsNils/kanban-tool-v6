@@ -3,14 +3,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BoxProps } from 'src/app/core/models/board';
 
 @Component({
-  selector: 'app-edit-box',
-  templateUrl: './edit-box.component.html',
-  styleUrls: ['./edit-box.component.scss']
+  selector: 'app-create-box',
+  templateUrl: './create-box.component.html',
+  styleUrls: ['./create-box.component.scss']
 })
-export class EditBoxComponent implements OnInit {
+export class CreateBoxComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: BoxProps, 
-              public dialogRef: MatDialogRef<EditBoxComponent>) { }
+              public dialogRef: MatDialogRef<CreateBoxComponent>) { }
 
               onNoClick(): void {
                 this.dialogRef.close();

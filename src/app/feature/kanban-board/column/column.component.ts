@@ -1,10 +1,11 @@
 import { Component, Input, OnChanges, SimpleChanges, OnInit, Output } from '@angular/core';
 import { BoardService } from 'src/app/core/services/board.service';
-import { BoxProps, Column } from 'src/app/core/models/board';
+import { Box, BoxProps, Column } from 'src/app/core/models/board';
 import { KanbanBoardComponent } from '../kanban-board.component';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
-import { EditBoxComponent } from '../edit-box/edit-box.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CreateBoxComponent } from '../create-box/create-box.component';
+
 
 @Component({
   selector: 'app-column',
@@ -12,11 +13,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./column.component.scss']
 })
 export class ColumnComponent {
-
   @Input() column?: Column;
 
-  constructor(private boardService: BoardService, public dialog:MatDialog) {
-  }
+  constructor(private boardService: BoardService, public dialog:MatDialog) {}
 
   deleteColumn() {
     if (this.column !== undefined){
@@ -26,9 +25,9 @@ export class ColumnComponent {
     }
   }
 
-  createColumn() {
+  createBox(): void {
     if (this.column !== undefined){
-      const dialogRef = this.dialog.open<EditBoxComponent, BoxProps | undefined, BoxProps | undefined>(EditBoxComponent, {
+      const dialogRef = this.dialog.open<CreateBoxComponent, BoxProps | undefined, BoxProps | undefined>(CreateBoxComponent, {
         data: undefined
         });
 

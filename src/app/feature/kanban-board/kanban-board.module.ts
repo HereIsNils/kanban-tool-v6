@@ -5,6 +5,7 @@ import { ColumnComponent } from './column/column.component';
 import { BoxComponent } from './box/box.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { EditBoxComponent } from './edit-box/edit-box.component';
+import { CreateBoxComponent } from './create-box/create-box.component';
 
 
 
@@ -15,6 +16,7 @@ import { EditBoxComponent } from './edit-box/edit-box.component';
     ColumnComponent,
     BoxComponent,
     EditBoxComponent,
+    CreateBoxComponent,
   ],
   imports: [
     CoreModule
