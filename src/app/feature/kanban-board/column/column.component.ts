@@ -18,7 +18,7 @@ export class ColumnComponent {
 
   constructor(private boardService: BoardService, public dialog:MatDialog) {}
 
-  deleteColumn() {
+  deleteColumn(): void {
     if (this.column !== undefined){
       this.boardService.deleteColumn(
       this.column.uuid
@@ -40,6 +40,15 @@ export class ColumnComponent {
     }
   }
 
+  onTitleChange(){
+    console.log(`on title change fired ${this.column?.name}`)
+    if (this.column !== undefined){
+      this.boardService.updateColumn(
+        this.column.uuid, this.column.getProps()
+      );
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['columnId'] && this.columnId !== undefined)
     if (this.column !== undefined) {
@@ -47,11 +56,4 @@ export class ColumnComponent {
     }
   }
 
-  onTitleChange(){
-    if (this.column !== undefined){
-      this.boardService.updateColumn(
-        this.column.uuid, this.column
-      );
-    }
-  }
 }

@@ -1,4 +1,10 @@
-<div (click)="openDialog()" *ngIf="box" class="bg-customMidBlue m-3 p-2 rounded-lg drop-shadow-lg hover:bg-opacity-75">
-    <h2>{{box.name}}</h2>
-    <p>{{box.description}}</p>
+<div (click)="openDialog()" *ngIf="box" class="bg-customMidBlue m-3 p-2 
+    rounded-lg drop-shadow-cstm hover:bg-opacity-75 flex flex-row max-w-[400px]">
+    <div>
+        <h2>{{box.name}}</h2>
+        <p>{{box.description}}</p>
+    </div>
+    <button mat-icon-button class="bg-slate-800 topLeft " (click)="deleteBox()">
+        <mat-icon>remove</mat-icon>
+    </button>
 </div>

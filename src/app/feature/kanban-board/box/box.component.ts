@@ -30,6 +30,11 @@ export class BoxComponent implements OnChanges {
     });
   }
 
+  deleteBox(): void {
+    if (this.box?.uuid === undefined) return;
+    this.boardService.deleteBox(this.box.uuid)
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['boxId'] && this.boxId !== undefined) {
       this.box = this.boardService.getBox(this.boxId);

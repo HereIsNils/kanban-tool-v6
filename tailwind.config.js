@@ -10,6 +10,9 @@ module.exports = {
       scale: {
         '2': '2.0',
       },
+      dropShadow: {
+        'cstm': '3px 4px 4px rgba(0, 0, 0, 0.7)'
+      },
     },
   },
   plugins: [],

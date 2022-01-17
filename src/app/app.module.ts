@@ -8,6 +8,7 @@ import { FeatureModule } from './feature/feature.module';
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './core/routs';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AppRoutes } from './core/routs';
     BrowserAnimationsModule,
     FeatureModule,
     CoreModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

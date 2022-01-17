@@ -9,83 +9,38 @@ import { Board, Box, BoxProps, Column, ColumnProps } from '../models/board';
 })
 export class BoardService {
   private _board: Board;
+  private key = "dataStorageKey";
 
   private boardChanged = new Subject<object>();
 
   constructor() { 
-    this._board = new Board(/*{
-      columns: [
-        {
-          name: "todo",
-          boxes: [
-            {
-              name: "fix this1",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this2",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this3",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this4",
-              description: "this porblem needs to be fixed"
-            }
-          ],
-          
-        },
-        {
-          name: "doing",
-          boxes: [
-            {
-              name: "fix this5",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this6",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this7",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this8",
-              description: "this porblem needs to be fixed"
-            }
-          ],
-          
-        },
-        {
-          name: "done",
-          boxes: [
-            {
-              name: "fix this9",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this10",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this11",
-              description: "this porblem needs to be fixed"
-            },
-            {
-              name: "fix this12",
-              description: "this porblem needs to be fixed"
-            }
-          ],
-        },
-      ]
-    }*/)
+    this._board = new Board()
+    this.loadBoardLS();
+    this.boardChanged.subscribe(() => this.saveBoardLS())
   }
 
   onBoardChange(): Observable<object>{
     return this.boardChanged.asObservable();
+  }
+
+  // saves the board to the local storage
+  saveBoardLS(): void {
+    localStorage.setItem(this.key, JSON.stringify(this._board.getProps()));
+  }
+
+  // gets the data from the local storage and replaces the current board 
+  // with the one from the storage
+  loadBoardLS():void  {
+    let board = localStorage.getItem(this.key)
+    if (board !== null){
+      this._board = new Board(JSON.parse(board));
+    } 
+  }
+
+  // replaces the data in the local storage with a new dataset  
+  refreshBoardLS(): void {
+    localStorage.clear();
+    this.saveBoardLS();  
   }
 
   getColumns(): Column[] {
