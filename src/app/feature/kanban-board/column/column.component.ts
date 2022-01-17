@@ -4,7 +4,7 @@ import { Box, BoxProps, Column } from 'src/app/core/models/board';
 import { KanbanBoardComponent } from '../kanban-board.component';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateBoxComponent } from '../create-box/create-box.component';
+import { EditBoxComponent } from '../edit-box/edit-box.component';
 
 
 @Component({
@@ -14,6 +14,7 @@ import { CreateBoxComponent } from '../create-box/create-box.component';
 })
 export class ColumnComponent {
   @Input() column?: Column;
+  @Input() columnId?: string
 
   constructor(private boardService: BoardService, public dialog:MatDialog) {}
 
@@ -27,7 +28,7 @@ export class ColumnComponent {
 
   createBox(): void {
     if (this.column !== undefined){
-      const dialogRef = this.dialog.open<CreateBoxComponent, BoxProps | undefined, BoxProps | undefined>(CreateBoxComponent, {
+      const dialogRef = this.dialog.open<EditBoxComponent, BoxProps | undefined, BoxProps | undefined>(EditBoxComponent, {
         data: undefined
         });
 
@@ -36,6 +37,13 @@ export class ColumnComponent {
           if (this.column?.uuid === undefined) return;
           this.boardService.createBox(this.column.uuid, result);
         });
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['columnId'] && this.columnId !== undefined)
+    if (this.column !== undefined) {
+      this.boardService.updateColumn(this.column.uuid, this.column.getProps())
     }
   }
 

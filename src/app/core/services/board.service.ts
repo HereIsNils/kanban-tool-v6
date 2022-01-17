@@ -13,7 +13,7 @@ export class BoardService {
   private boardChanged = new Subject<object>();
 
   constructor() { 
-    this._board = new Board({
+    this._board = new Board(/*{
       columns: [
         {
           name: "todo",
@@ -81,7 +81,7 @@ export class BoardService {
           ],
         },
       ]
-    })
+    }*/)
   }
 
   onBoardChange(): Observable<object>{

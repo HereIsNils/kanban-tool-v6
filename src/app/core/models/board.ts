@@ -105,7 +105,11 @@ export class Column {
 export class Board {
     private _columns: Column[];
 
-    constructor(props: BoardProps) {
+    constructor(props?: BoardProps) {
+        if( props === undefined){
+            this._columns = [];
+            return;
+        } 
         this._columns = props.columns.map(c => new Column(c));
     }
 

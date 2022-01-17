@@ -1,3 +1,4 @@
+import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BoxProps } from 'src/app/core/models/board';
@@ -9,8 +10,15 @@ import { BoxProps } from 'src/app/core/models/board';
 })
 export class EditBoxComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: BoxProps, 
-              public dialogRef: MatDialogRef<EditBoxComponent>) { }
+  constructor(public dialogRef: MatDialogRef<EditBoxComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: BoxProps ) { 
+                if (data === undefined){
+                  this.data = {
+                    name: "",
+                    description: ""
+                  }
+                }
+              }
 
               onNoClick(): void {
                 this.dialogRef.close();
