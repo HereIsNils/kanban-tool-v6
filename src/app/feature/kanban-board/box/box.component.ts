@@ -18,8 +18,10 @@ export class BoxComponent implements OnChanges {
   constructor(private boardService: BoardService, public dialog:MatDialog) { }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open<EditBoxComponent, BoxProps | undefined, BoxProps | undefined>(EditBoxComponent, {
-      data: this.box?.getProps()
+    const dialogRef = this.dialog.open<EditBoxComponent, BoxProps | 
+                                       undefined, BoxProps | undefined>(EditBoxComponent, {
+                                       data: this.box?.getProps(),
+                                       //panelClass: 'my-test-css'
     });
 
     dialogRef.afterClosed().subscribe(result => {

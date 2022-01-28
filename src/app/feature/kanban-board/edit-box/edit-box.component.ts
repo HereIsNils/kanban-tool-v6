@@ -3,6 +3,11 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BoxProps } from 'src/app/core/models/board';
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-edit-box',
   templateUrl: './edit-box.component.html',
@@ -20,8 +25,18 @@ export class EditBoxComponent implements OnInit {
                 }
               }
 
+              foods: Food[] = [
+                {value: 'steak-0', viewValue: 'Steak'},
+                {value: 'pizza-1', viewValue: 'Pizza'},
+                {value: 'tacos-2', viewValue: 'Tacos'},
+              ];
+
               onNoClick(): void {
                 this.dialogRef.close();
+              }
+
+              placeholder(): void {
+                console.log("placeholder function called!")
               }
 
   ngOnInit(): void {

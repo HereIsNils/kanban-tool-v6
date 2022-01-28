@@ -8,6 +8,16 @@
         </li>
         <li>
             <mat-form-field appearance="fill">
+            <mat-label>Column</mat-label>
+            <mat-select (selectionChange)="placeholder()">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
                 <textarea matInput [(ngModel)]="data.description"></textarea>
             </mat-form-field>
