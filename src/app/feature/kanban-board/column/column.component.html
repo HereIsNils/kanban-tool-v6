@@ -1,4 +1,5 @@
-<div *ngIf="column" class="flex flex-row m-3 max-w-[400px] text-customWhite text-center h-screen">
+<div    *ngIf="column" 
+        class="flex flex-row m-3 max-w-[400px] text-customWhite text-center h-screen">
     
     <!-- Header stuff. -->
     <div class="flex flex-col">
@@ -10,7 +11,11 @@
         </div>
         <!-- Boxes. -->
         <div class="flex flex-col text-left">
-            <app-box *ngFor="let box of column.boxes" [boxId]="box.uuid"></app-box>
+            <app-box    *ngFor="let box of column.boxes" 
+                        [boxId]="box.uuid" 
+                        cdkDrag
+                        class="my-box">
+            </app-box>
         </div>
     </div>
     <!-- Remove column button. -->

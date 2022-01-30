@@ -1,6 +1,11 @@
-<div class="flex flex-row">
+<div    class="flex flex-row"
+        cdkDropListGroup>
+
     <ng-container *ngIf="columns">
-        <app-column *ngFor="let column of columns" [column]="column"></app-column>
+        <app-column *ngFor="let column of columns" [column]="column"
+        cdkDropList
+        (cdkDropListDropped)="drop($event)"
+        class="my-column"></app-column>
     </ng-container>
     <div class="py-[40px] mx-4">
         <button mat-fab color="accent" (click)="createColumn()">

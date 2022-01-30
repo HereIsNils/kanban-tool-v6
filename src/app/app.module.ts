@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './core/routs';
 import { FormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     FeatureModule,
     CoreModule,
     RouterModule.forRoot(AppRoutes),
-    FormsModule
+    FormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

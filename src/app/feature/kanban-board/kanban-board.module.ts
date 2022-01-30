@@ -5,6 +5,7 @@ import { ColumnComponent } from './column/column.component';
 import { BoxComponent } from './box/box.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { EditBoxComponent } from './edit-box/edit-box.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -17,7 +18,8 @@ import { EditBoxComponent } from './edit-box/edit-box.component';
     EditBoxComponent,
   ],
   imports: [
-    CoreModule
+    CoreModule,
+    DragDropModule
   ]
 })
 export class KanbanBoardModule { }
