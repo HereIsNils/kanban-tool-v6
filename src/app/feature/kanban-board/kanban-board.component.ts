@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Board, Column } from 'src/app/core/models/board';
+import { Board, BoxProps, Column, ColumnProps } from 'src/app/core/models/board';
 import { BoardService } from 'src/app/core/services/board.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
@@ -36,18 +36,5 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
       boxes: []
     })
     this.refreshColumns();
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
   }
 }

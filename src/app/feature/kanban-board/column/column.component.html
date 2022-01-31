@@ -11,10 +11,11 @@
         </div>
         <!-- Boxes. -->
         <div class="flex flex-col text-left">
-            <app-box    *ngFor="let box of column.boxes" 
+            <app-box    cdkDrag
+                        *ngFor="let box of column.boxes" 
                         [boxId]="box.uuid" 
-                        cdkDrag
-                        class="my-box">
+                        class="my-box"
+                        (cdkDragDropped)="drop(this.box)">
             </app-box>
         </div>
     </div>

@@ -2,9 +2,8 @@
         cdkDropListGroup>
 
     <ng-container *ngIf="columns">
-        <app-column *ngFor="let column of columns" [column]="column"
-        cdkDropList
-        (cdkDropListDropped)="drop($event)"
+        <app-column cdkDropList
+        *ngFor="let column of columns" [column]="column"
         class="my-column"></app-column>
     </ng-container>
     <div class="py-[40px] mx-4">

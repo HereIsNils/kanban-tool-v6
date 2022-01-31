@@ -55,4 +55,8 @@ export class ColumnComponent {
       this.boardService.updateColumn(this.column.uuid, this.column.getProps())
     }
   }
+
+  drop(box: Box){
+    //this.
+  }
 }
