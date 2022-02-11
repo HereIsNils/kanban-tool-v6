@@ -114,4 +114,8 @@ export class BoardService {
     })
     this.boardChanged.next({});
   }
+
+  boardUpdate():void {
+    this.boardChanged.next({});
+  }
 }

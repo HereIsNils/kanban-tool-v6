@@ -5,6 +5,7 @@ import { KanbanBoardComponent } from '../kanban-board.component';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { EditBoxComponent } from '../edit-box/edit-box.component';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -56,7 +57,18 @@ export class ColumnComponent {
     }
   }
 
-  drop(box: Box){
-    //this.
+  drop(event: CdkDragDrop<Box[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.boardService.boardUpdate();
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+      this.boardService.boardUpdate();
+    }
   }
 }
